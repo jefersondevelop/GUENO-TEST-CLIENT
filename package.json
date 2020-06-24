@@ -13,7 +13,6 @@
     "express": "^4.17.1"
   },
   "scripts": {
-    "start": "node server.js",
     "start:dev": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
