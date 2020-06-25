@@ -116,13 +116,14 @@ class App extends React.Component {
 
   render(){
     
-    const { id, user, error } = this.state;
+    const { id, user, error, isFetching} = this.state;
 
     return (
       <div className="container register">
+        {console.log(isFetching)}
         <div className="row">
             <div className="col-md-3 register-left"> 
-                <img src={require('./logo-dark.png')} className="img-size"/>
+                <img alt="logo" src={require('./logo-dark.png')} className="img-size"/>
                 <p>Busca un usuario ingresando un ID y mira sus datos!</p>
             </div>
             <div className="col-md-9 register-right">
@@ -134,6 +135,12 @@ class App extends React.Component {
                                 <div className="form-group">
                                     <input onKeyPress={(e) => this.handleKeyEnterPress(e)} value={id} onChange={e => this.handleInputChange(e)} name="id" type="text" className="form-control" placeholder="Ingrese el ID del usuario" />
                                     <p style={{fontSize: 15, marginLeft:5}}>Ej. 124531548</p>
+                                    {
+                                      (isFetching)&&
+                                      <div class="spinner-border text-primary" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                      </div>
+                                    }
                                     {
                                       (error.message)&&
                                         <div className={`alert alert-warning alert-dismissible fade show`} role="alert">
@@ -167,7 +174,7 @@ class App extends React.Component {
                 </div>
             </div>
         </div>
-        <div class="text-right footer-design ">Realizado por: 
+        <div className="text-right footer-design ">Realizado por: 
           <p style={{color:"black"}}>Jeferson J. Alvarado C. 
             <br></br>© 2020 Copyright</p>  
           <p></p>
