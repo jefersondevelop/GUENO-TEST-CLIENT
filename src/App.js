@@ -92,6 +92,7 @@ class App extends React.Component {
     .then(json => {
       this.setState({
         isFetching: false,
+        error: {message:null},
         user: json.data
       })
     })
@@ -120,7 +121,6 @@ class App extends React.Component {
 
     return (
       <div className="container register">
-        {console.log(isFetching)}
         <div className="row">
             <div className="col-md-3 register-left"> 
                 <img alt="logo" src={require('./logo-dark.png')} className="img-size"/>
